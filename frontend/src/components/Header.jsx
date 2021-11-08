@@ -17,6 +17,7 @@ const Header = () => {
     <>
       <Navbar
         className="color-nav white"
+        bg="light"
         expand="sm"
         variant="light"
         collapseOnSelect
