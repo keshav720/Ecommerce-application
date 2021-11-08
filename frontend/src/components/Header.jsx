@@ -29,8 +29,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              {/* {userInfo.isAdmin && ( */}
-              {true && (
+              {userInfo.isAdmin  && (
                 <LinkContainer to="/add">
                   <Nav.Link>
                     <i class="far fa-plus-square"></i>
