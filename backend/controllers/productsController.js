@@ -1,10 +1,9 @@
-const Product = require("../models/ProductModel");
-const asyncHandler = require("express-async-handler");
+const Product = require('../models/ProductModel');
+const asyncHandler = require('express-async-handler');
 
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
   // throw new Error("Some Eror");
-  console.log(products);
   res.json(products);
 });
 
@@ -13,8 +12,17 @@ const getProduct = asyncHandler(async (req, res) => {
   if (product) {
     res.json(product);
   } else {
-    res.status(404).json({ message: "Product Not Found" });
+    res.status(404).json({ message: 'Product Not Found' });
   }
 });
 
-module.exports = { getProducts, getProduct };
+const addNewProduct = asyncHandler(async (req, res) => {
+  const product = await Product.create(req.body);
+  if (product) {
+    await product.save();
+  } else {
+    res.status(400).json({ message: 'Error Adding New Product' });
+  }
+});
+
+module.exports = { getProducts, getProduct, addNewProduct };
